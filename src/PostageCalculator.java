@@ -1,7 +1,7 @@
 public class PostageCalculator {
-    private final double BASE_PRICE = 3.75;
+    private static final double BASE_PRICE = 3.75;
 
-    public double calculatePostage(String zip1, String zip2, double weight, double length, double height, double width)
+    public static double calculatePostage(String zip1, String zip2, double weight, double length, double height, double width)
     {
         double cost = BASE_PRICE;
         double volume = height * length * weight;
@@ -30,7 +30,7 @@ public class PostageCalculator {
         return cost;
     }
 
-    public double calculatePostage(Address origin, Address destination, double weight, double length, double height, double width)
+    public static double calculatePostage(Address origin, Address destination, double weight, double length, double height, double width)
     {
         double cost = BASE_PRICE;
         double volume = height * length * weight;
@@ -56,7 +56,7 @@ public class PostageCalculator {
         return cost;
     }
 
-    public double calculatePostage(Package pack)
+    public static double calculatePostage(Package pack)
     {
         double cost = BASE_PRICE;
         if (pack.getVolume() > 36) {
