@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.lang.module.FindException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -65,7 +64,7 @@ public class PackageSimulator {
         ArrayList<String> zipcodes = new ArrayList<String>();
         try
         {
-            File zipData = new File("us_zipcodes");
+            File zipData = new File("us_zipcodes.txt");
             Scanner reader = new Scanner(zipData);
             while (reader.hasNextLine())
             {
@@ -76,9 +75,9 @@ public class PackageSimulator {
                     zipcodes.add(zip[0]);
                 }
             }
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException noFile) {
             System.out.println("File failed");
-            return null;
         }
 
         int randomNum = (int)(Math.random()*zipcodes.size());
