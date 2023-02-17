@@ -52,6 +52,7 @@ public class ClientRunner {
         {
             System.out.print("How many packages would you like to simulate? ");
             int numGen = Integer.parseInt(s.nextLine());
+            PackageSimulator.generatePackages(numGen);
             System.out.println("Randomly generated packages info: ");
             System.out.println(PackageSimulator.getSimulationInfo());
         }

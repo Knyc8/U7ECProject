@@ -6,13 +6,13 @@ public class Package {
     private double height;
     private double width;
 
-    public Package(Address o, Address d, double lb, double l, double h, double w)
+    public Package(Address o, Address d, double lb, double h, double l, double w)
     {
         origin = o;
         destination = d;
         weight = lb;
-        length = l;
         height = h;
+        length = l;
         width = w;
     }
 
