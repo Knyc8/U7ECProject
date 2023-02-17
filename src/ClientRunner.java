@@ -50,7 +50,10 @@ public class ClientRunner {
         }
         if (choice.equals("2"))
         {
-
+            System.out.print("How many packages would you like to simulate? ");
+            int numGen = Integer.parseInt(s.nextLine());
+            System.out.println("Randomly generated packages info: ");
+            System.out.println(PackageSimulator.getSimulationInfo());
         }
         if (choice.equals("4"))
         {
