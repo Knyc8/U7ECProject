@@ -1,4 +1,8 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.lang.module.FindException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class PackageSimulator {
     private static ArrayList<Package> packages = new ArrayList<Package>();
@@ -12,15 +16,11 @@ public class PackageSimulator {
             double length = Math.random() * (18 - 2) + 2;
             double width = Math.random() + (15 - 2) + 2;
             double weight = Math.random() * (70 - 0.1) + 0.1;
-            String zip1 = "";
-            String zip2 = "";
-            for (int j = 0; j < 5; j++)
+            String zip1 = readAndGenZip();
+            String zip2 = readAndGenZip();
+            while (zip1.equals(zip2))
             {
-                zip1 += (int)(Math.random()*10);
-            }
-            for (int j = 0; j < 5; j++)
-            {
-                zip2 += (int)(Math.random()*10);
+                zip2 = readAndGenZip();
             }
             Address origin = new Address("123 Random Street Apt 3C, City, State " + zip1);
             Address destination = new Address("123 Random Street Apt 3C, City, State " + zip2);
@@ -58,5 +58,31 @@ public class PackageSimulator {
     public static void resetSimulation()
     {
         packages.clear();
+    }
+
+    private static String readAndGenZip()
+    {
+        ArrayList<String> zipcodes = new ArrayList<String>();
+        try
+        {
+            File zipData = new File("us_zipcodes");
+            Scanner reader = new Scanner(zipData);
+            while (reader.hasNextLine())
+            {
+                String line = reader.nextLine();
+                String[] zip = line.split(",");
+                if (zipData.length() > 1)
+                {
+                    zipcodes.add(zip[0]);
+                }
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File failed");
+            return null;
+        }
+
+        int randomNum = (int)(Math.random()*zipcodes.size());
+        System.out.println(zipcodes);
+        return zipcodes.get(randomNum);
     }
 }
