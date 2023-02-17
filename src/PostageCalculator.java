@@ -11,7 +11,7 @@ public class PostageCalculator {
         }
         if (weight > 40)
         {
-            double perTenthPound = 0.05 * (int) (weight-40 / (0.1));
+            double perTenthPound = 0.05 * (int) (40 / (0.1));
             cost += perTenthPound;
             perTenthPound = 0.1 * (int)(((weight)-40) /0.1);
             cost += perTenthPound;
@@ -40,7 +40,7 @@ public class PostageCalculator {
         }
         if (weight > 40)
         {
-            double perTenthPound = 0.05 * (int) (weight-40 / (0.1));
+            double perTenthPound = 0.05 * (int) (40 / (0.1));
             cost += perTenthPound;
             perTenthPound = 0.1 * (int)(((weight)-40) /0.1);
             cost += perTenthPound;
@@ -65,7 +65,7 @@ public class PostageCalculator {
         }
         if (pack.getWeight() > 40)
         {
-            double perTenthPound = 0.05 * (int) (pack.getWeight()-40 / (0.1));
+            double perTenthPound = 0.05 * (int) (40 / (0.1));
             cost += perTenthPound;
             perTenthPound = 0.1 * (int)(((pack.getWeight())-40) /0.1);
             cost += perTenthPound;
