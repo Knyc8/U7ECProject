@@ -1,12 +1,12 @@
 public class PostageCalculator {
     private static final double BASE_PRICE = 3.75;
 
-    public static double calculatePostage(String zip1, String zip2, double weight, double length, double height, double width)
+    public static double calculatePostage(String zip1, String zip2, double weight, double height, double length, double width)
     {
-        double cost = BASE_PRICE;
-        double volume = height * length * weight;
-        if (volume > 36) {
-            double perInch = 0.1 * (int)volume-36;
+        double cost = 3.75;
+        double combined = height + length + width;
+        if (combined > 36) {
+            double perInch = 0.1 * (int)combined-36;
             cost += perInch;
         }
         if (weight > 40)
@@ -18,7 +18,7 @@ public class PostageCalculator {
         }
         else
         {
-            double perTenthPound = 0.05 * (int) (weight / (0.1));
+            double perTenthPound = 0.05 * (weight / (0.1));
             cost += perTenthPound;
         }
         int cc1 = Integer.parseInt(zip1.substring(0, 3));
@@ -30,12 +30,12 @@ public class PostageCalculator {
         return cost;
     }
 
-    public static double calculatePostage(Address origin, Address destination, double weight, double length, double height, double width)
+    public static double calculatePostage(Address origin, Address destination, double weight, double height, double length, double width)
     {
         double cost = BASE_PRICE;
-        double volume = height * length * weight;
-        if (volume > 36) {
-            double perInch = 0.1 * (int)volume-36;
+        double combined = height + length + width;
+        if (combined > 36) {
+            double perInch = 0.1 * (int)combined-36;
             cost += perInch;
         }
         if (weight > 40)
@@ -59,8 +59,9 @@ public class PostageCalculator {
     public static double calculatePostage(Package pack)
     {
         double cost = BASE_PRICE;
-        if (pack.getVolume() > 36) {
-            double perInch = 0.1 * (int)pack.getVolume()-36;
+        double combined = pack.getHeight() + pack.getLength() + pack.getWidth();
+        if (combined  > 36) {
+            double perInch = 0.1 * (int)combined-36;
             cost += perInch;
         }
         if (pack.getWeight() > 40)
