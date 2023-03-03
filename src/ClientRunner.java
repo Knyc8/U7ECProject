@@ -55,6 +55,25 @@ public class ClientRunner {
                 System.out.println("Randomly generated packages info: ");
                 System.out.println(PackageSimulator.getSimulationInfo());
             }
+            if (choice.equals("3")) {
+                System.out.println("""
+                                   How packages are calculated:
+                                   - The program takes in the zipcodes of the origin and the destination, the weight
+                                     of the package, and the dimensions of the package.
+                                   - Packages start with a base cost of $3.75.
+                                   - For each tenth of a pound, $0.05 is added to the base cost.
+                                   - To calculate the final cost, the positive difference between the first three
+                                     digits of both zipcodes are divided by 100 and subsequently added to the total cost.
+
+                                   If the package is above a combined 36 inches:
+                                   - For packages above a combined 36 inches (h + l + w), an additional $0.10 is added
+                                     to the final cost for each inch above 36in.
+
+                                   If the package is above the 40lb limit:
+                                   - For packages above the 40lb limit, an additional $0.10 is added for every tenth 
+                                     of a pound above the weight limit.
+                                   """);
+            }
             if (choice.equals("4")) {
                 System.out.println("Successfully exited the menu.");
             }
