@@ -15,11 +15,11 @@ public class PackageSimulator {
             double length = Math.random() * (18 - 2) + 2;
             double width = Math.random() + (15 - 2) + 2;
             double weight = Math.random() * (70 - 0.1) + 0.1;
-            String zip1 = readAndGenZip();
-            String zip2 = readAndGenZip();
+            String zip1 = FileReader.genZip().get((int) (Math.random()*FileReader.genZip().size()));
+            String zip2 = FileReader.genZip().get((int) (Math.random()*FileReader.genZip().size()));
             while (zip1.equals(zip2))
             {
-                zip2 = readAndGenZip();
+                zip2 = FileReader.genZip().get((int) (Math.random()*FileReader.genZip().size()));
             }
             Address origin = new Address("123 Random Street Apt 3C, City, State " + zip1);
             Address destination = new Address("123 Random Street Apt 3C, City, State " + zip2);
@@ -48,8 +48,8 @@ public class PackageSimulator {
             simFo += "Destination address: " + packages.get(i).getDestination() + "\n";
             simFo += "Weight: " + packages.get(i).getWeight() + "\n";
             simFo += "Height: " + packages.get(i).getHeight() + "\n";
-            simFo += "Length: " + packages.get(1).getLength() + "\n";
-            simFo += "Width: " + packages.get(1).getWidth() + "\n";
+            simFo += "Length: " + packages.get(i).getLength() + "\n";
+            simFo += "Width: " + packages.get(i).getWidth() + "\n";
         }
         simFo += "Cost: $" + String.format("%.2f", generateTotalCost());
         return simFo;
@@ -57,31 +57,5 @@ public class PackageSimulator {
     public static void resetSimulation()
     {
         packages.clear();
-    }
-
-    private static String readAndGenZip()
-    {
-        ArrayList<String> zipcodes = new ArrayList<String>();
-        try
-        {
-            File zipData = new File("us_zipcodes.txt");
-            Scanner reader = new Scanner(zipData);
-            while (reader.hasNextLine())
-            {
-                String line = reader.nextLine();
-                String[] zip = line.split(",");
-                if (zipData.length() > 1)
-                {
-                    zipcodes.add(zip[0]);
-                }
-            }
-        }
-        catch (FileNotFoundException noFile) {
-            System.out.println("File failed");
-        }
-
-        int randomNum = (int)(Math.random()*zipcodes.size());
-        System.out.println(zipcodes);
-        return zipcodes.get(randomNum);
     }
 }

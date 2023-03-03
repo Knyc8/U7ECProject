@@ -6,7 +6,7 @@ public class PostageCalculator {
         double cost = 3.75;
         double combined = height + length + width;
         if (combined > 36) {
-            double perInch = 0.1 * (int)combined-36;
+            double perInch = 0.1 * (int)(combined-36);
             cost += perInch;
         }
         if (weight > 40)
@@ -35,7 +35,7 @@ public class PostageCalculator {
         double cost = BASE_PRICE;
         double combined = height + length + width;
         if (combined > 36) {
-            double perInch = 0.1 * (int)combined-36;
+            double perInch = 0.1 * (int)(combined-36);
             cost += perInch;
         }
         if (weight > 40)
@@ -61,7 +61,7 @@ public class PostageCalculator {
         double cost = BASE_PRICE;
         double combined = pack.getHeight() + pack.getLength() + pack.getWidth();
         if (combined  > 36) {
-            double perInch = 0.1 * (int)combined-36;
+            double perInch = 0.1 * (int)(combined-36);
             cost += perInch;
         }
         if (pack.getWeight() > 40)
